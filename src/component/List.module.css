@@ -1,0 +1,7 @@
+.container{
+    background-color: gainsboro;
+    width: 80%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}

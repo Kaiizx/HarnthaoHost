@@ -1,23 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Header from "./component/Header";
+import Card from "./component/Card";
+import "./App.css";
+const dummy=[
+  {id:1,
+   name:'burger',
+   price:100
+  },
+  {id:2,
+    name:'pizza',
+    price:122
+  },
+  {id:3,
+    name:'watee',
+    price:20
+  },
+  {id:3,
+    name:'watee',
+    price:20
+  },
+  {id:3,
+    name:'watee',
+    price:20
+  },
+  {id:3,
+    name:'watee',
+    price:20
+  },
+  {id:3,
+    name:'watee',
+    price:20
+  },
+  {id:3,
+    name:'watee',
+    price:20
+  },
+  {id:3,
+    name:'watee',
+    price:20
+  },
+]
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <Header/>
+        <Card order={dummy}/>
+  
+        
+
     </div>
   );
 }

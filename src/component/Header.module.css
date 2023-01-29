@@ -1,0 +1,11 @@
+.nav{
+    background-color: #022B3A;
+    padding: 20px 30px;
+    display: flex;
+}
+.icon {
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-right: 0.5rem;
+    color: aliceblue;
+  }
