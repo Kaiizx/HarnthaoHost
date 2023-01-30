@@ -1,0 +1,43 @@
+
+
+.flex-form input[type="button"] {
+  background:  #006589;
+  border: 1px solid #006589;
+  color: #fff;
+  padding: 0 30px;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.flex-form input[type="button"]:hover {
+  background:  #022B3A;
+  border: 1px solid #022B3A;
+}
+
+.flex-form {
+  display: flex;
+  width: 100%;
+  box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.3);
+  margin: 30px auto;
+
+}
+
+.flex-form > * {
+  border: 0;
+  padding: 0 0 0 10px;
+  background: #fff;
+  line-height: 50px;
+  font-size: 1rem;
+  border-radius: 0;
+  outline: 0;
+  border:2px solid  #006589;;
+
+
+}
+
+input[type="search"] {
+  flex-basis: 500px;
+}
+

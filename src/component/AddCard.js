@@ -1,27 +1,57 @@
 import React from "react";
-import classes from './AddCard.module.css'
+import classes from "./AddCard.module.css";
 import Modal from "./Modal";
+import Addperson from "./Addperson";
+import { useState } from "react";
+import Addbutton from "./AddButton";
+import AddOrder from "./AddOrder";
 const AddCard = (props) => {
-  
-    const cartModalContent = (
-        <React.Fragment>
-          <div className={classes.header}>
-            <span><button>ADD person</button></span>
-            <span ><button>ADD Order</button></span>
-          </div>
-          <form>
-            <div>
-                
-            </div>
-          </form>
-             </React.Fragment>
-      );
-    return(
-        <Modal onClose={props.onClose}>
-            {cartModalContent}
-        </Modal>
-    )
-
+  const [addform, setaddform] = useState(false);
+  const [addp, setaddp] = useState(true);
+  const [addo, setaddo] = useState(false);
+  const onaddorder = () => {
+    setaddo(true);
+    setaddp(false);
   };
-  export default AddCard
-  
+  const onaddperson = () => {
+    setaddo(false);
+    setaddp(true);
+  };
+  const selected = !addform && classes.select;
+  const cartModalContent = (
+    <React.Fragment>
+      <div className={classes.header}>
+        <span className={addp ? classes.select : classes.control}>
+          <button onClick={onaddperson}>ADD person</button>
+        </span>
+        <span className={addo ? classes.select : classes.control}>
+          <button onClick={onaddorder}>ADD Order</button>
+        </span>
+      </div>
+      <form>
+        <div></div>
+      </form>
+    </React.Fragment>
+  );
+  return (
+    <Modal onClose={props.onClose}>
+      {cartModalContent}
+      {addp ? 
+        <Addperson
+          addper={props.addper}
+          onChange={props.onChange}
+          onClick={props.onClick}
+        />
+        :
+        <AddOrder
+        addor={props.addor}
+        addpr={props.addpr}
+        onChangeor={props.onChangeor}
+        onChangepr={props.onChangepr}
+        onClickor={props.onClickor}/>
+      }
+      <Addbutton onClick={props.onClose}>Close</Addbutton>
+    </Modal>
+  );
+};
+export default AddCard;

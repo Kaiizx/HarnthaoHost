@@ -52,54 +52,8 @@ const dummy=[
   },
 ]
 const dummyperson=[
-  {
-    id:1,
-    name:'Afnan',
-    cost:200,
-    piece:2
-  },
-  {
-    id:2,
-    name:'Afnan',
-    cost:200,
-    piece:2
-  },
-  {
-    id:3,
-    name:'Afnan',
-    cost:200,
-    piece:2
-  },
-  {
-    id:4,
-    name:'Afnan',
-    cost:200,
-    piece:2
-  },
-  {
-    id:5,
-    name:'Afnan',
-    cost:200,
-    piece:2
-  },
-  {
-    id:6,
-    name:'Afnan',
-    cost:200,
-    piece:2
-  },
-  {
-    id:7,
-    name:'Afnan',
-    cost:200,
-    piece:2
-  },
-  {
-    id:8,
-    name:'Afnan',
-    cost:200,
-    piece:2
-  },
+  
+
 ]
 
 function App() {
