@@ -13,6 +13,14 @@
     margin-top: 5px;
     margin-top: 15px;
 }
+.dicon{
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5rem;
+    color: aliceblue;
+    margin-top: 5px;
+    margin-top: 15px;
+}
 .box{
     background-color:  #022B3A ;
     padding: 40px 30px;
@@ -20,6 +28,7 @@
     display: flex;
     justify-content: space-around;
 }
+
 .subbox{
     display: flex;
     color: aliceblue;

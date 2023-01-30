@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+    justify-content: space-around;
+    background-color:  #022B3A;
+    margin: 1rem;
+    color: aliceblue;
+    border-radius: 15px;
+    margin-bottom: 0;
+}
+.bicon{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    color: aliceblue;
+    margin-top: 10px;
+}
+.nicon{
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5rem;
+    color: aliceblue;
+    margin-top: 10px;
+}
