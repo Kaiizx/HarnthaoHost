@@ -4,52 +4,7 @@ import classes from "./App.css";
 import AddCard from "./component/AddCard";
 import { useState } from "react";
 const dummy=[
-  {id:1,
-   name:'burger',
-   price:100,
-   person:2
-  },
-  {id:2,
-    name:'pizza',
-    price:122,
-    person:2
-  },
-  {id:3,
-    name:'watee',
-    price:20,
-    person:2
-  },
-  {id:4,
-    name:'watee',
-    price:20,
-    person:2
-  },
-  {id:5,
-    name:'watee',
-    price:20,
-    person:2
-  },
-  {id:6,
-    name:'watee',
-    price:20,
-    person:2
-  },
-  {id:7,
-    name:'watee',
-    price:20,
-    person:2,
-    person:2
-  },
-  {id:8,
-    name:'watee',
-    price:20,
-    person:2
-  },
-  {id:9,
-    name:'watee',
-    price:20,
-    person:2
-  },
+  
 ]
 const dummyperson=[
   

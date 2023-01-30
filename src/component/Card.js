@@ -61,7 +61,7 @@ const greatestor =
     const neworder = {
         id: greatestor,
         name: addor,
-        price: addpr,
+        price: +addpr,
         person: 9,
       };
     
@@ -73,8 +73,9 @@ const greatestor =
   };
 
   useEffect(()=>{console.log('update')},[perlist])
-  const sum = props.order.reduce((acc, obj) => acc + obj.price, 0);
+  const sum = orlist.reduce((acc, obj) => acc + obj.price, 0);
   const personNum = Object.keys(perlist).length;
+  const orderNum = Object.keys(orlist).length;
   const orderlist = orlist.map((order) => (
     <ListCard
       key={order.id}
@@ -110,7 +111,7 @@ const greatestor =
           
         />
       )}
-      <Track amount={props.amount} person={personNum} total={sum} />
+      <Track amount={orderNum} person={personNum} total={sum} />
       <Bar status={toggle} />
       <div className={classes.scroller}>{!toggle ? orderlist : personlist}</div>
       <div className={classes.butcon}>
