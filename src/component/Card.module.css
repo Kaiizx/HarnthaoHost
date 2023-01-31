@@ -30,6 +30,7 @@
   .but{
     width: 40%;
   }
+ 
   .scroller {
     margin-top: 20px;
   width: 100%;
@@ -38,5 +39,10 @@
   scrollbar-color: rebeccapurple green;
   scrollbar-width: thin;
 }
+.icon{
+  width: 1.5rem;
+  height: 1.5rem;
+  margin:auto;
 
+}
   

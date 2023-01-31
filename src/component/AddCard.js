@@ -48,7 +48,10 @@ const AddCard = (props) => {
         addpr={props.addpr}
         onChangeor={props.onChangeor}
         onChangepr={props.onChangepr}
-        onClickor={props.onClickor}/>
+        onClickor={props.onClickor}
+        perlist={props.perlist}
+        />
+        
       }
       <Addbutton onClick={props.onClose}>Close</Addbutton>
     </Modal>

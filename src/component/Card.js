@@ -5,6 +5,7 @@ import ListCard from "./ListCard";
 import Addbutton from "./AddButton";
 import PersonIcon from "./icon/PersonIcon";
 import Bar from "./Bar";
+import BillIcon from "./icon/BillIcon";
 import AddCard from "./AddCard";
 import { useState, useEffect } from "react";
 const Card = (props) => {
@@ -17,10 +18,10 @@ const Card = (props) => {
   const [addpr, setaddpr] = useState("");
   const greatestper =
     perlist.reduce((acc, obj) => (obj.id > acc ? obj.id : acc), 0) + 1;
-const greatestor =
+  const greatestor =
     orlist.reduce((acc, obj) => (obj.id > acc ? obj.id : acc), 0) + 1;
- 
-    const onClickAdd = () => {
+
+  const onClickAdd = () => {
     setAdd(true);
   };
   const onClicktoggle = () => {
@@ -41,38 +42,49 @@ const greatestor =
     console.log(event.target.value);
     setaddpr(event.target.value);
   };
- 
- 
 
   const submitaddperson = () => {
     const newperson = {
-        id: greatestper,
-        name: addper,
-        cost: 999,
-        person: 9,
-      };
-    
+      id: greatestper,
+      name: addper,
+      cost: 999,
+      person: 9,
+    };
+
     console.log(newperson);
     setperlist([...perlist, newperson]);
     console.log(perlist);
-    setaddper('')
+    setaddper("");
   };
   const submitaddorder = () => {
     const neworder = {
-        id: greatestor,
-        name: addor,
-        price: +addpr,
-        person: 9,
-      };
-    
+      id: greatestor,
+      name: addor,
+      price: +addpr,
+      person: 9,
+    };
+
     console.log(neworder);
     setorlist([...orlist, neworder]);
-    setaddor('')
-    setaddpr('')
-    console.log('sub,mit')
+    setaddor("");
+    setaddpr("");
+    repersonlist();
+    console.log("sub,mit");
+  };
+  const repersonlist = () => {
+    let totalperson = sum / personNum;
+    setperlist((prevArr) =>
+      prevArr.map((obj) => {
+        return { ...obj, cost: totalperson.toFixed(2), person: orderNum };
+      })
+    );
+    setorlist((prevArr) =>
+      prevArr.map((obj) => {
+        return { ...obj, person: personNum };
+      })
+    );
   };
 
-  useEffect(()=>{console.log('update')},[perlist])
   const sum = orlist.reduce((acc, obj) => acc + obj.price, 0);
   const personNum = Object.keys(perlist).length;
   const orderNum = Object.keys(orlist).length;
@@ -99,6 +111,7 @@ const greatestor =
     <section className={classes.summary}>
       {Add && (
         <AddCard
+          perlist={perlist}
           addper={addper}
           onChange={addperson}
           onClick={submitaddperson}
@@ -108,7 +121,6 @@ const greatestor =
           onChangeor={addorder}
           onChangepr={addprice}
           onClickor={submitaddorder}
-          
         />
       )}
       <Track amount={orderNum} person={personNum} total={sum} />
@@ -119,7 +131,12 @@ const greatestor =
           <Addbutton onClick={onClickAdd}>Add</Addbutton>
         </div>
         <div className={classes.but}>
-          <Addbutton onClick={onClicktoggle}>Toggle</Addbutton>
+          <Addbutton onClick={onClicktoggle}>
+            {" "}
+            <div className={classes.icon}>
+              {!toggle ? <BillIcon /> : <PersonIcon />}
+            </div>
+          </Addbutton>
         </div>
       </div>
     </section>
