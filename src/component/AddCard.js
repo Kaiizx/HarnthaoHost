@@ -33,6 +33,9 @@ const AddCard = (props) => {
       </form>
     </React.Fragment>
   );
+  const checkhandler=(checkname)=>{
+    props.onCheckhandler(checkname)
+  }
   return (
     <Modal onClose={props.onClose}>
       {cartModalContent}
@@ -44,6 +47,7 @@ const AddCard = (props) => {
         />
         :
         <AddOrder
+        checkname={checkhandler}
         addor={props.addor}
         addpr={props.addpr}
         onChangeor={props.onChangeor}

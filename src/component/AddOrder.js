@@ -1,10 +1,26 @@
 import classes from "./Addorder.module.css";
-import React from "react";
+import React, { useState } from "react";
 import './Checkbox.css'
 import Checkbox from "./Checkbox";
+
+
 const AddOrder = (props) => {
+  const [nameChecked,setNameChecked]=useState([])
+  const checkhandler=(name,check)=>{
+    if(check===true){
+      setNameChecked([...nameChecked,name])
+    }
+    else{
+      setNameChecked(nameChecked.filter(element=>element !==name))
+    }
+
+  }
+  const onClickAdd=()=>{
+    props.onClickor()
+    props.checkname(nameChecked)
+  }
   const personlist = props.perlist.map((person) => (
-    <Checkbox key={person.id} name={person.name} />
+    <Checkbox key={person.id} name={person.name} check={checkhandler} />
   ))
   return (
     <React.Fragment>
@@ -35,7 +51,7 @@ const AddOrder = (props) => {
     {personlist}
     </div>
     <div className={classes.but}>
-    <input type="button" onClick={props.onClickor} value="+ ADD" />
+    <input type="button" onClick={onClickAdd} value="+ ADD" />
     </div>
     
     </React.Fragment>
