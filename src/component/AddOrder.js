@@ -1,23 +1,26 @@
 import classes from "./Addorder.module.css";
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import './Checkbox.css'
 import Checkbox from "./Checkbox";
 
 
 const AddOrder = (props) => {
   const [nameChecked,setNameChecked]=useState([])
+  const checkref=useRef([])
   const checkhandler=(name,check)=>{
     if(check===true){
       setNameChecked([...nameChecked,name])
+      checkref.current=[...nameChecked,name]
     }
     else{
       setNameChecked(nameChecked.filter(element=>element !==name))
+      checkref.current=checkref.current.filter(element=>element !==name)
     }
-
+    props.checkname(checkref.current)
   }
   const onClickAdd=()=>{
     props.onClickor()
-    props.checkname(nameChecked)
+  
   }
   const personlist = props.perlist.map((person) => (
     <Checkbox key={person.id} name={person.name} check={checkhandler} />

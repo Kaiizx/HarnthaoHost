@@ -35,6 +35,8 @@ const AddCard = (props) => {
   );
   const checkhandler=(checkname)=>{
     props.onCheckhandler(checkname)
+    console.log('check')
+    console.log(checkname)
   }
   return (
     <Modal onClose={props.onClose}>

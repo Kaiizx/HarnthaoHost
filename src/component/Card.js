@@ -7,19 +7,21 @@ import PersonIcon from "./icon/PersonIcon";
 import Bar from "./Bar";
 import BillIcon from "./icon/BillIcon";
 import AddCard from "./AddCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
+import { useStateWithCallback } from "./useStatewithcallback";
+
+
 const Card = (props) => {
   const [Add, setAdd] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [perlist, setperlist] = useState([]);
   const [orlist, setorlist] = useState([]);
-  const [personName,setPersonName]=useState([])
+  const [personName, setPersonName] = useState([]);
   const [addper, setaddper] = useState("");
   const [addor, setaddor] = useState("");
   const [addpr, setaddpr] = useState("");
-  const [nameChecked,setNameChecked]=useState([])
-
-
+  const [nameChecked, setNameChecked] = useState([]);
+  const checkRef=useRef([])
   const greatestper =
     perlist.reduce((acc, obj) => (obj.id > acc ? obj.id : acc), 0) + 1;
   const greatestor =
@@ -33,9 +35,14 @@ const Card = (props) => {
   };
   const onClose = () => {
     setAdd(false);
-    console.log(perlist);
-    relist()
+    relist();
+    console.log(perlist)
   };
+  const onCheckhandler = (name) => {
+    checkRef.current=name
+
+  };
+
   const addperson = (event) => {
     console.log(event.target.value);
     setaddper(event.target.value);
@@ -49,35 +56,68 @@ const Card = (props) => {
     setaddpr(event.target.value);
   };
 
-  const submitaddperson = async() => {
+  const submitaddperson = () => {
     const newperson = {
       id: greatestper,
       name: addper,
       cost: 999,
       person: 9,
+      order:[],
+      ordername:[]
     };
-    setPersonName([...personName,newperson.name])
+    setPersonName([...personName, newperson.name]);
     setperlist([...perlist, newperson]);
-    console.log(perlist);
     setaddper("");
-    console.log(orlist)
   };
+
+  const findpersoninorder=(name)=>{
+    const count = orlist.reduce((acc, obj) => {
+    return acc + obj.personused.filter(ordername => ordername === name).length;
+}, 0);
+return count
+  }
+  const addpaid=(name) =>{
+    let orderpaid=[]
+    orlist.map((orl)=>{
+        if(orl.personused.includes(name)){
+          orderpaid.push(orl.personpay)
+        }
+    }
+    )
+    return orderpaid
+  }
+
+  const addordername=(name) =>{
+    let ordername=[]
+    orlist.map((orl)=>{
+        if(orl.personused.includes(name)){
+          ordername.push(orl.name)
+        }
+    }
+    )
+    return ordername
+  }
 
 
   const relist = () => {
-    let totalperson = sum / personNum;
     setperlist((prevArr) =>
       prevArr.map((obj) => {
-        return { ...obj, cost: totalperson.toFixed(2), person: orderNum };
+        let array=addpaid(obj.name)
+        let sum = array.reduce((acc, curr) => acc + curr, 0);
+        return { ...obj, cost: sum.toFixed(2), person: findpersoninorder(obj.name) ,order:addpaid(obj.name),ordername:addordername(obj.name) };
       })
+
     );
+  
+      
     setorlist((prevArr) =>
       prevArr.map((obj) => {
-        return { ...obj};
+        return { ...obj };
       })
     );
-    console.log(orlist)
+
   };
+
   const sum = orlist.reduce((acc, obj) => acc + obj.price, 0);
   const personNum = Object.keys(perlist).length;
   const orderNum = Object.keys(orlist).length;
@@ -104,27 +144,15 @@ const Card = (props) => {
       id: greatestor,
       name: addor,
       price: +addpr,
-      person: Object.keys(nameChecked).length
+      person: Object.keys(checkRef.current).length,
+      personused: checkRef.current,
+      personpay:+addpr/Object.keys(checkRef.current).length
     };
-    console.log(Object.keys(nameChecked).length)
-    console.log('ordernum')
-    console.log(orderNum)
-    if(orderNum===0){
-      console.log('ordernddddd')
-      setorlist(neworder)
-    }
-    console.log(neworder);
-    setorlist([...orlist,neworder]);
-    console.log('new')
-    
+    setorlist(()=>{return[...orlist, neworder]});
     setaddor("");
     setaddpr("");
-    console.log("sub,mit");
-    console.log(orlist)
   };
-  const onCheckhandler=(name)=>{
-    setNameChecked(name)
-  }
+
   return (
     <section className={classes.summary}>
       {Add && (
@@ -151,11 +179,9 @@ const Card = (props) => {
         </div>
         <div className={classes.but}>
           <Addbutton onClick={onClicktoggle}>
-  
             <div className={classes.icon}>
               {toggle ? <BillIcon /> : <PersonIcon />}
             </div>
-            
           </Addbutton>
         </div>
       </div>
