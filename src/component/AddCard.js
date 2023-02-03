@@ -46,6 +46,7 @@ const AddCard = (props) => {
           addper={props.addper}
           onChange={props.onChange}
           onClick={props.onClick}
+          ordername={props.ordername}
         />
         :
         <AddOrder
