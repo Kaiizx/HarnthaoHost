@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Harnthaohost/static/css/main.bac1a55a.css",
+    "main.js": "/Harnthaohost/static/js/main.57bcbc09.js",
+    "static/js/787.3478e0f3.chunk.js": "/Harnthaohost/static/js/787.3478e0f3.chunk.js",
+    "index.html": "/Harnthaohost/index.html",
+    "main.bac1a55a.css.map": "/Harnthaohost/static/css/main.bac1a55a.css.map",
+    "main.57bcbc09.js.map": "/Harnthaohost/static/js/main.57bcbc09.js.map",
+    "787.3478e0f3.chunk.js.map": "/Harnthaohost/static/js/787.3478e0f3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bac1a55a.css",
+    "static/js/main.57bcbc09.js"
+  ]
+}
