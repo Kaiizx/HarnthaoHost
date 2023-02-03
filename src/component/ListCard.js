@@ -4,11 +4,11 @@ const ListCard=(props)=>{
     return(
         <div className={classes.container}>
             
-            <h2>{props.id}</h2>
-            <h2>{props.name}</h2>
-            <h2>{props.price} ฿</h2>
-            <h2>{props.person}</h2>
-
+            <p className={classes.text} >{props.id}</p>
+            <p className={classes.text}>{props.name}</p>
+            <p className={classes.text}>{props.price} ฿</p>
+            <p className={classes.text}>{props.person}</p>
+                            
         </div>
     )
 }

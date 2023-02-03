@@ -8,7 +8,6 @@ import Bar from "./Bar";
 import BillIcon from "./icon/BillIcon";
 import AddCard from "./AddCard";
 import { useState, useEffect,useRef } from "react";
-import { useStateWithCallback } from "./useStatewithcallback";
 
 
 const Card = (props) => {
@@ -44,7 +43,6 @@ const Card = (props) => {
   };
 
   const addperson = (event) => {
-    console.log(event.target.value);
     setaddper(event.target.value);
   };
   const addorder = (event) => {
@@ -57,6 +55,9 @@ const Card = (props) => {
   };
 
   const submitaddperson = () => {
+    if(addper.trim().length===0){
+      return;
+    }
     const newperson = {
       id: greatestper,
       name: addper,
@@ -140,6 +141,11 @@ return count
     />
   ));
   const submitaddorder = () => {
+
+    if(addor.trim().length===0 || addpr.trim.length===0){
+      return;
+    }
+
     const neworder = {
       id: greatestor,
       name: addor,
@@ -151,6 +157,8 @@ return count
     setorlist(()=>{return[...orlist, neworder]});
     setaddor("");
     setaddpr("");
+
+
   };
 
   return (
